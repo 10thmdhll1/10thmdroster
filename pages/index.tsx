@@ -1,41 +1,13 @@
 import getRoster from "@/lib/roster";
 
-import Accordion from "@mui/material/Accordion";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import AccordionDetails from "@mui/material/AccordionDetails";
 import Container from "@mui/material/Container";
-import Typography from "@mui/material/Typography";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import Roster from "@/components/Roster";
 
-export default function Roster({ roster }) {
+export default function RosterPage({ roster }) {
   console.log(roster);
   return (
     <Container maxWidth="xl">
-      <Accordion>
-        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography>{roster.name} Command</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget.
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-      {roster.children.map((c) => (
-        <Accordion key={c.name}>
-          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-            <Typography>{c.name}</Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-              eget.
-            </Typography>
-          </AccordionDetails>
-        </Accordion>
-      ))}
+      <Roster roster={roster} isRoot />
     </Container>
   );
 }
