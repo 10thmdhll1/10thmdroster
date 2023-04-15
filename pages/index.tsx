@@ -4,7 +4,6 @@ import Container from "@mui/material/Container";
 import Roster from "@/components/Roster";
 
 export default function RosterPage({ roster }) {
-  console.log(roster);
   return (
     <Container maxWidth="xl">
       <Roster roster={roster} isRoot />

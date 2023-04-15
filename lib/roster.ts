@@ -1,63 +1,84 @@
+import { google } from "googleapis";
+
+const { API_KEY, SPREADSHEET_ID } = process.env;
+
 const getRoster = async () => {
+  const sheets = google.sheets({
+    version: "v4",
+    auth: API_KEY,
+  });
+
+  const sheet = await sheets.spreadsheets.values.get({
+    spreadsheetId: SPREADSHEET_ID,
+    range: "Main Roster!C2:I",
+  });
+
+  const allMembers = sheet.data.values.map(
+    ([name, rank, enlistDate, dischargeDate, company, platoon, squad]) => ({
+      name,
+      rank,
+      enlistDate,
+      dischargeDate,
+      company,
+      platoon,
+      squad,
+    })
+  );
+
+  const activeMembers = allMembers.filter((m) => !m.dischargeDate);
+  const ablePlatoons = ["First", "Second", "Third"];
+  const squads = ["First", "Second", "Third", "Fourth", "Fifth"];
   const roster = {
     name: "Battalion",
-    members: [
-      { name: "Matthews", rank: "Col.", medals: [] },
-      { name: "Bill", rank: "Maj.", medals: [] },
-    ],
+    members: activeMembers.filter(
+      (m) => m.company === "Division" || m.company === "Battalion"
+    ),
     children: [
       {
         name: "Able Company",
-        members: [
-          { name: "Big_Tex", rank: "Cpt.", medals: [] },
-          { name: "Fox", rank: "1st. Lt", medals: [] },
-        ],
-        children: [
-          {
-            name: "First Platoon",
-            members: [
-              { name: "Bob9008", rank: "2Lt.", medals: [] },
-              { name: "RidleySerber", rank: "WO.", medals: [] },
-            ],
-            children: [
-              {
-                name: "First Squad",
-                members: [
-                  { name: "Red1776", rank: "S/Sgt.", medals: [] },
-                  { name: "mike", rank: "Sgt.", medals: [] },
-                ],
-              },
-              {
-                name: "Second Squad",
-                members: [
-                  { name: "Slick47", rank: "S/Sgt.", medals: [] },
-                  { name: "scndrespondr", rank: "Sgt.", medals: [] },
-                ],
-              },
-            ],
-          },
-        ],
+        members: activeMembers.filter(
+          (m) => m.company === "Able" && m.platoon === "Company"
+        ),
+        children: ablePlatoons.map((platoonName) => {
+          const platoonMembers = activeMembers.filter(
+            (m) => m.company === "Able" && m.platoon === platoonName
+          );
+          const squadsNames = squads.filter((s) =>
+            platoonMembers.some((m) => m.squad === s)
+          );
+          return {
+            name: `${platoonName} Platoon`,
+            members: platoonMembers.filter((m) => m.squad === "Company"),
+            children: squadsNames.map((squadName) => ({
+              name: `${squadName} Squad`,
+              members: platoonMembers.filter((m) => m.squad === squadName),
+            })),
+          };
+        }),
       },
       {
         name: "King Company",
-        members: [
-          { name: "Tankk", rank: "Cpt.", medals: [] },
-          { name: "HellSiege", rank: "1st Lt.", medals: [] },
-        ],
+        members: activeMembers.filter(
+          (m) => m.company === "King" && m.platoon === "Company"
+        ),
         children: [
           {
             name: "First Squadron",
-            members: [
-              { name: "6PuckClutch", rank: "M/Sgt.", medals: [] },
-              { name: "Texasrod", rank: "T/Sgt.", medals: [] },
-            ],
+            members: activeMembers.filter(
+              (m) =>
+                m.company === "King" &&
+                m.platoon === "First" &&
+                m.squad === "Company"
+            ),
             children: [
               {
                 name: "First Squadron",
-                members: [
-                  { name: "Mass", rank: "T/3", medals: [] },
-                  { name: "Nutz", rank: "T/3", medals: [] },
-                ],
+                members: activeMembers.filter(
+                  (m) =>
+                    m.company === "King" &&
+                    m.platoon === "First" &&
+                    m.squad === "First"
+                ),
               },
             ],
           },
@@ -65,17 +86,13 @@ const getRoster = async () => {
       },
       {
         name: "Reserves",
-        members: [
-          { name: "Shepard", rank: "CWO.", medals: [] },
-          { name: "Salvador", rank: "T/3", medals: [] },
-        ],
+        members: activeMembers.filter((m) => m.platoon === "Reserves"),
       },
       {
         name: "Retired Members",
-        members: [
-          { name: "Clem", rank: "Cpt.", medals: [] },
-          { name: "T-Rex", rank: "2Lt.", medals: [] },
-        ],
+        members: allMembers.filter(
+          (m) => m.dischargeDate && m.platoon === "Retired"
+        ),
       },
     ],
   };

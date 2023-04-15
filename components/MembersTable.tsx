@@ -13,9 +13,8 @@ export default function MembersTable({ members }) {
         <TableHead>
           <TableRow>
             <TableCell>Rank</TableCell>
-            <TableCell>Rank Description</TableCell>
             <TableCell>Display Name</TableCell>
-            <TableCell>Medals and Ribbons</TableCell>
+            <TableCell>Member Since</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -24,12 +23,11 @@ export default function MembersTable({ members }) {
               key={row.name}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
-              <TableCell> </TableCell>
               <TableCell>{row.rank}</TableCell>
               <TableCell component="th" scope="row">
                 {row.name}
               </TableCell>
-              <TableCell> </TableCell>
+              <TableCell>{row.enlistDate}</TableCell>
             </TableRow>
           ))}
         </TableBody>
