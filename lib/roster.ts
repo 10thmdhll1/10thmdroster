@@ -18,7 +18,7 @@ const getRoster = async () => {
       [rank]: {
         index,
         description,
-        img: rank.replace(/[\s\.\/]/g, "").toLowerCase(),
+        img: rank.replace(/[\s./]/g, "").toLowerCase(),
       },
     }),
     {}
