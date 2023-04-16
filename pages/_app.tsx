@@ -4,13 +4,35 @@ import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
-import { CssBaseline } from "@mui/material";
+import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
+import "../styles.css";
+
+const theme = createTheme({
+  palette: {
+    mode: "dark",
+    primary: {
+      main: "#1b72e6",
+    },
+    secondary: {
+      main: "#f50057",
+    },
+    background: {
+      default: "#292828",
+      paper: "#292828",
+    },
+    info: {
+      main: "#1b72e6",
+    },
+  },
+});
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <CssBaseline />
-      <Component {...pageProps} />
+      <ThemeProvider theme={theme}>
+        <Component {...pageProps} />
+      </ThemeProvider>
     </>
   );
 }
