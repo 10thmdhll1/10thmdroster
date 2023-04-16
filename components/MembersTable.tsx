@@ -5,6 +5,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import Image from "next/image";
 
 export default function MembersTable({ members }) {
   return (
@@ -23,7 +24,21 @@ export default function MembersTable({ members }) {
               key={row.name}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
-              <TableCell>{row.rank}</TableCell>
+              <TableCell>
+                <div
+                  style={{ display: "flex", alignItems: "center", gap: "16px" }}
+                >
+                  {row.rankImg !== "pvt" && row.rankImg !== "rct" && (
+                    <Image
+                      alt={row.rankDescription}
+                      src={`/assets/ranks/${row.rankImg}.png`}
+                      width={50}
+                      height={50}
+                    />
+                  )}
+                  <span>{row.rankDescription}</span>
+                </div>
+              </TableCell>
               <TableCell component="th" scope="row">
                 {row.name}
               </TableCell>

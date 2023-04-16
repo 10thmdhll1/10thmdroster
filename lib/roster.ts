@@ -1,35 +1,55 @@
 import { google } from "googleapis";
 
 const { API_KEY, SPREADSHEET_ID } = process.env;
-
 const getRoster = async () => {
   const sheets = google.sheets({
     version: "v4",
     auth: API_KEY,
   });
 
+  const ranksSheet = await sheets.spreadsheets.values.get({
+    spreadsheetId: SPREADSHEET_ID,
+    range: "Ranks!A2:C",
+  });
+
+  const ranks = ranksSheet.data.values.reduce(
+    (acc, [rank, index, description]) => ({
+      ...acc,
+      [rank]: {
+        index,
+        description,
+        img: rank.replace(/[\s\.\/]/g, "").toLowerCase(),
+      },
+    }),
+    {}
+  );
+
   const sheet = await sheets.spreadsheets.values.get({
     spreadsheetId: SPREADSHEET_ID,
     range: "Main Roster!C2:I",
   });
 
-  const allMembers = sheet.data.values.map(
-    ([name, rank, enlistDate, dischargeDate, company, platoon, squad]) => ({
-      name,
-      rank,
-      enlistDate,
-      dischargeDate,
-      company,
-      platoon,
-      squad,
-    })
-  );
+  const allMembers = sheet.data.values
+    .map(
+      ([name, rank, enlistDate, dischargeDate, company, platoon, squad]) => ({
+        name,
+        rank,
+        rankDescription: ranks[rank].description,
+        rankImg: ranks[rank].img,
+        enlistDate,
+        dischargeDate,
+        company,
+        platoon,
+        squad,
+      })
+    )
+    .sort((a, b) => ranks[b.rank].index - ranks[a.rank].index);
 
   const activeMembers = allMembers.filter((m) => !m.dischargeDate);
   const ablePlatoons = ["First", "Second", "Third"];
   const squads = ["First", "Second", "Third", "Fourth", "Fifth"];
   const roster = {
-    name: "Battalion",
+    name: "Division and Battalion Command",
     members: activeMembers.filter(
       (m) => m.company === "Division" || m.company === "Battalion"
     ),
