@@ -10,9 +10,7 @@ export default function Roster({ roster, isRoot = false }) {
     <>
       <Accordion defaultExpanded={isRoot}>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography>
-            {roster.name} {isRoot && "Command"}
-          </Typography>
+          <Typography>{roster.name}</Typography>
         </AccordionSummary>
         <AccordionDetails>
           {!isRoot && roster.children && (
