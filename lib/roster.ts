@@ -26,7 +26,7 @@ const getRoster = async () => {
 
   const sheet = await sheets.spreadsheets.values.get({
     spreadsheetId: SPREADSHEET_ID,
-    range: "Main Roster!C2:I",
+    range: "Main Roster!B2:H",
   });
 
   const allMembers = sheet.data.values
@@ -47,7 +47,7 @@ const getRoster = async () => {
 
   const activeMembers = allMembers.filter((m) => !m.dischargeDate);
   const ablePlatoons = ["First", "Second", "Third"];
-  const squads = ["First", "Second", "Third", "Fourth", "Fifth"];
+  const squads = ["First", "Second", "Third", "Fourth"];
   const roster = {
     name: "Division and Battalion Command",
     members: activeMembers.filter(
