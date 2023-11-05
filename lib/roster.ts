@@ -13,11 +13,11 @@ const getRoster = async () => {
   });
 
   const ranks = ranksSheet.data.values.reduce(
-    (acc, [rank, index, description]) => ({
+    (acc, [rank, index, Description]) => ({
       ...acc,
       [rank]: {
         index,
-        description,
+        Description,
         img: rank.replace(/[\s./]/g, "").toLowerCase(),
       },
     }),
@@ -34,7 +34,7 @@ const getRoster = async () => {
       ([name, rank, enlistDate, dischargeDate, company, platoon, squad]) => ({
         name,
         rank,
-        rankDescription: ranks[rank].description,
+        rankDescription: ranks[rank].Description,
         rankImg: ranks[rank].img,
         enlistDate,
         dischargeDate,
