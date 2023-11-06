@@ -40,13 +40,14 @@ const getRoster = async () => {
         dischargeDate,
         company,
         platoon,
-        squad,
+        squad
       })
     )
     .sort((a, b) => ranks[b.rank].index - ranks[a.rank].index);
 
   const activeMembers = allMembers.filter((m) => !m.dischargeDate);
   const foxPlatoons = ["First", "Second", "Third"];
+  const bravoPlatoons = ["First", "Second", "Third"];
   const squads = ["First", "Second", "Third", "Fourth"];
   const roster = {
     name: "Division and Battalion Command",
