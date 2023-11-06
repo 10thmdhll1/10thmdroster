@@ -104,7 +104,7 @@ const getRoster = async () => {
 						name: "HLL - FP1S4",
 						members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "First" && m.squad === "Fourth"),
 					},
-				];
+				],
 			}, 
 			{
 				name: "HLL - FP2",
