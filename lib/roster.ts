@@ -47,8 +47,8 @@ const getRoster = async () => {
 
   const activeMembers = allMembers.filter((m) => !m.dischargeDate);
   // const foxPlatoons = ["First", "Second", "Third"];
-  // const bravoPlatoons = ["First", "Second", "Third"];
-  // const squads = ["First", "Second", "Third", "Fourth"];
+  const bravoPlatoons = ["First", "Second", "Third"];
+  const squads = ["First", "Second", "Third", "Fourth"];
   
   const roster = 
   {
@@ -92,7 +92,7 @@ const getRoster = async () => {
           };
         }
 		),
-      },
+      }, */
       {
         name: "Squad - Bravo Company",
         members: activeMembers.filter(
@@ -115,7 +115,7 @@ const getRoster = async () => {
           };
         }),
         ],
-      }, */
+      }, 
       {
         name: "Reserves",
         members: activeMembers.filter((m) => m.platoon === "Reserves"),
