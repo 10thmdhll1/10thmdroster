@@ -93,7 +93,7 @@ const getRoster = async () => {
         }
 		),
       }, */
-      {
+      {[
         name: "Squad - Bravo Company",
         members: activeMembers.filter((m) => m.company === "Bravo" && m.platoon === "Company"),
         children: bravoPlatoons.map((platoonName) => 
@@ -111,7 +111,7 @@ const getRoster = async () => {
             })),
           };
         }),
-        
+        ],
       }, 
       {
         name: "Reserves",
