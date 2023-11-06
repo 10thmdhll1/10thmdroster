@@ -126,7 +126,7 @@ var getRoster = async () => {
           (m) => m.dischargeDate && m.platoon === "Retired"
         ),
       },
-    ]
+    ],
   };
 
   return roster;
