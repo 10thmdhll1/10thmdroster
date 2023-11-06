@@ -94,26 +94,12 @@ const getRoster = async () => {
 		),
       }, */
       {
+        name: "HLL - Fox Company",
+        members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "Company"),
+      }, 
+	  {
         name: "Squad - Bravo Company",
         members: activeMembers.filter((m) => m.company === "Bravo" && m.platoon === "Company"),
-        children: bravoPlatoons.map((platoonName) => 
-		{
-			const platoonMembers = activeMembers.filter((m) => m.company === "Bravo" && m.platoon === platoonName);
-			const squadsNames = squads.filter((s) => platoonMembers.some((m) => m.squad === s));
-           
-		  {
-            name: `${platoonName} Platoon`,
-            members: platoonMembers.filter((m) => m.squad === "Company"),
-            children: squadsNames.map((squadName) => 
-			(
-				{
-				name: `${squadName} Squad`,
-				members: platoonMembers.filter((m) => m.squad === squadName),
-				}
-			)),
-          };
-        }),
-        ],
       }, 
       {
         name: "Reserves",
