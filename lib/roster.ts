@@ -82,20 +82,20 @@ const getRoster = async () => {
 		),
       }, */
       {
-        name: "HLL - Fox Company Leadership",
+        name: "HLL - Fox Company",
         members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "Company"),
 		children:
 		[
 			{
-				name: "HLL - Fox Company - First Platoon",
+				name: "HLL - FP1",
 				members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "First" && m.squad === "Company"),
 			}, 
 			{
-				name: "HLL - Fox Company - Second Platoon",
+				name: "HLL - FP2",
 				members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "Second" && m.squad === "Company"),
 			}, 
 			{
-				name: "HLL - Fox Company - Third Platoon",
+				name: "HLL - FP3",
 				members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "Third" && m.squad === "Company"),
 			}, 
 		],
