@@ -57,7 +57,7 @@ const getRoster = async () => {
 	(
       (m) => m.company === "Division" || m.company === "Battalion"
     ),
-    children: 
+    /*children: 
 	[
       {
         name: "HLL - Fox Company",
@@ -126,7 +126,7 @@ const getRoster = async () => {
           (m) => m.dischargeDate && m.platoon === "Retired"
         ),
       },
-    ],
+    ],*/
   };
 
   return roster;
