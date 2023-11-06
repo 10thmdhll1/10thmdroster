@@ -87,7 +87,7 @@ const getRoster = async () => {
       }, 
 	  {
         name: "HLL - Fox Company - First Platoon",
-        members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "First" && m.squad == "Company"),
+        members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "First" && m.squad === "Company"),
       }, 
 	  {
         name: "Squad - Bravo Company",
