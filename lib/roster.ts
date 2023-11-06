@@ -49,6 +49,7 @@ const getRoster = async () => {
   
   const roster = 
   {
+	// Division and Battalion Command
     name: "Division and Battalion Command",
     members: activeMembers.filter((m) => m.company === "Division" || m.company === "Battalion"),
     children: 
@@ -79,77 +80,78 @@ const getRoster = async () => {
 		),
       }, */
       {
+		// Fox Company Command  
         name: "HLL - Fox Company",
         members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "Company"),
 		children:
 		[
 			{
+				// FP1 Command
 				name: "HLL - FP1",
 				members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "First" && m.squad === "Company"),
 				children:
 				[
 					{
+						// FP1S1 Members
 						name: "HLL - FP1S1",
 						members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "First" && m.squad === "First"),
 					},				
 					{
+						// FP1S2 Members
 						name: "HLL - FP1S2",
 						members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "First" && m.squad === "Second"),
 					},				
 					{
+						// FP1S3 Members
 						name: "HLL - FP1S3",
 						members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "First" && m.squad === "Third"),
 					},
 					{
+						// FP1S4 Members
 						name: "HLL - FP1S4",
 						members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "First" && m.squad === "Fourth"),
 					},
 				],
 			}, 
 			{
+				// FP2 Command
 				name: "HLL - FP2",
 				members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "Second" && m.squad === "Company"),
 				children:
 				[
 					{
+						// FP2S1 Members
 						name: "HLL - FP2S1",
 						members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "Second" && m.squad === "First"),
 					},				
 					{
+						// FP2S2 Members
 						name: "HLL - FP2S2",
 						members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "Second" && m.squad === "Second"),
 					},				
 					{
+						// FP2S3 Members
 						name: "HLL - FP2S3",
 						members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "Second" && m.squad === "Third"),
 					},
 					{
+						// FP2S4 Members
 						name: "HLL - FP2S4",
 						members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "Second" && m.squad === "Fourth"),
 					},
 				],
 			}, 
 			{
+				// FP3 Command
 				name: "HLL - FP3",
 				members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "Third" && m.squad === "Company"),
 				children:
 				[
 					{
+						// FP3S1 Members
 						name: "HLL - FP3S1",
 						members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "Third" && m.squad === "First"),
 					},				
-					{
-						name: "HLL - FP3S2",
-						members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "Third" && m.squad === "Second"),
-					},				
-					{
-						name: "HLL - FP3S3",
-						members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "Third" && m.squad === "Third"),
-					},
-					{
-						name: "HLL - FP3S4",
-						members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "Third" && m.squad === "Fourth"),
-					},
 				],
 			}, 
 		],
@@ -157,8 +159,39 @@ const getRoster = async () => {
 	  
 	  
 	  {
+		// Bravo Company Command  
         name: "Squad - Bravo Company Leadership",
         members: activeMembers.filter((m) => m.company === "Bravo" && m.platoon === "Company"),
+		children:
+		[
+			{
+				// BP1 Command
+				name: "Squad - BP1",
+				members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "First" && m.squad === "Company"),
+				children:
+				[
+					{
+						// BP1S1 Members
+						name: "HLL - FP1S1",
+						members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "First" && m.squad === "First"),
+					},				
+					{
+						// BP1S2 Members
+						name: "HLL - FP1S2",
+						members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "First" && m.squad === "Second"),
+					},				
+					{
+						// BP1S3 Members
+						name: "HLL - FP1S3",
+						members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "First" && m.squad === "Third"),
+					},
+					{
+						// BP1S4 Members
+						name: "HLL - FP1S4",
+						members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "First" && m.squad === "Fourth"),
+					},
+				],
+			}, 
       }, 
       {
         name: "Reserves",
