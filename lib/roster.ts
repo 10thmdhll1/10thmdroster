@@ -91,19 +91,19 @@ const getRoster = async () => {
 					{
 						name: "HLL - FP1S1",
 						members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "First" && m.squad === "First"),
-					};				
+					},				
 					{
 						name: "HLL - FP1S2",
 						members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "First" && m.squad === "Second"),
-					};				
+					},				
 					{
 						name: "HLL - FP1S3",
 						members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "First" && m.squad === "Third"),
-					};
+					},
 					{
 						name: "HLL - FP1S4",
 						members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "First" && m.squad === "Fourth"),
-					};
+					},
 				];
 			}, 
 			{
