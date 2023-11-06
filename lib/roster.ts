@@ -46,9 +46,6 @@ const getRoster = async () => {
     .sort((a, b) => ranks[b.rank].index - ranks[a.rank].index);
 
   const activeMembers = allMembers.filter((m) => !m.dischargeDate);
-  // const foxPlatoons = ["First", "Second", "Third"];
-  // const bravoPlatoons = ["First", "Second", "Third"];
-  // const squads = ["First", "Second", "Third", "Fourth"];
   
   const roster = 
   {
@@ -91,20 +88,28 @@ const getRoster = async () => {
 				members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "First" && m.squad === "Company"),
 				children:
 				[
-					name: "HLL - FP1S1",
-					members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "First" && m.squad === "First"),
+					{
+						name: "HLL - FP1S1",
+						members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "First" && m.squad === "First"),
+					};
 				];
 				[
-					name: "HLL - FP1S2",
-					members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "First" && m.squad === "Second"),
+					{
+						name: "HLL - FP1S2",
+						members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "First" && m.squad === "Second"),
+					};	
 				];
 				[
-					name: "HLL - FP1S3",
-					members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "First" && m.squad === "Third"),
+					{
+						name: "HLL - FP1S3",
+						members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "First" && m.squad === "Third"),
+					};
 				];
 				[
-					name: "HLL - FP1S4",
-					members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "First" && m.squad === "Fourth"),
+					{
+						name: "HLL - FP1S4",
+						members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "First" && m.squad === "Fourth"),
+					};
 				];
 			}, 
 			{
