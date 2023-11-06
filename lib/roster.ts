@@ -89,8 +89,7 @@ const getRoster = async () => {
         members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "Company"),
 		children:
 		[
-			const platoonMembers = activeMembers.filter((m) => m.company === "Fox" && m.platoon === platoonName);
-			const squadsNames = squads.filter((s) =>platoonMembers.some((m) => m.squad === s));
+			members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "First"),
 		],
       }, 
 	  {
