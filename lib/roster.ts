@@ -40,7 +40,7 @@ const getRoster = async () => {
         dischargeDate,
         company,
         platoon,
-        squad
+        squad,
       })
     )
     .sort((a, b) => ranks[b.rank].index - ranks[a.rank].index);
