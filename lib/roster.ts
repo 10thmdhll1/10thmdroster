@@ -53,11 +53,8 @@ const getRoster = async () => {
   const roster = 
   {
     name: "Division and Battalion Command",
-    members: activeMembers.filter
-	(
-      (m) => m.company === "Division" || m.company === "Battalion"
-    ),
-     children: 
+    members: activeMembers.filter((m) => m.company === "Division" || m.company === "Battalion"),
+    children: 
 	[
      /* {
         name: "HLL - Fox Company",
@@ -87,13 +84,6 @@ const getRoster = async () => {
       {
         name: "HLL - Fox Company",
         members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "Company"),
-		children:
-		[
-			members: activeMembers.filter
-			(
-				(m) => m.company === "Fox" && m.platoon === "First"
-			),
-		],
       }, 
 	  {
         name: "Squad - Bravo Company",
