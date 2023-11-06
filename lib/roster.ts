@@ -57,9 +57,9 @@ const getRoster = async () => {
 	(
       (m) => m.company === "Division" || m.company === "Battalion"
     ),
-    /* children: 
+     children: 
 	[
-      {
+     /* {
         name: "HLL - Fox Company",
         members: activeMembers.filter
 		(
@@ -119,14 +119,14 @@ const getRoster = async () => {
       {
         name: "Reserves",
         members: activeMembers.filter((m) => m.platoon === "Reserves"),
-      },
+      }, */
       {
         name: "Retired Members",
         members: allMembers.filter(
           (m) => m.dischargeDate && m.platoon === "Retired"
         ),
       },
-    ], */
+    ], 
   };
 
   return roster;
