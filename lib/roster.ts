@@ -115,11 +115,11 @@ const getRoster = async () => {
           };
         }),
         ],
-      },
+      }, */
       {
         name: "Reserves",
         members: activeMembers.filter((m) => m.platoon === "Reserves"),
-      }, */
+      }, 
       {
         name: "Retired Members",
         members: allMembers.filter(
