@@ -47,7 +47,7 @@ const getRoster = async () => {
 
   const activeMembers = allMembers.filter((m) => !m.dischargeDate);
   // const foxPlatoons = ["First", "Second", "Third"];
-  const bravoPlatoons = ["First", "Second", "Third"];
+  // const bravoPlatoons = ["First", "Second", "Third"];
   const squads = ["First", "Second", "Third", "Fourth"];
   
   const roster = 
