@@ -155,9 +155,7 @@ const getRoster = async () => {
 				],
 			}, 
 		],
-      }, 
-	  
-	  
+      }, 	  
 	  {
 		// Bravo Company Command  
         name: "Squad - Bravo Company Leadership",
