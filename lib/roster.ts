@@ -1,18 +1,18 @@
 import { google } from "googleapis";
 
-var { API_KEY, SPREADSHEET_ID } = process.env;
-var getRoster = async () => {
-  var sheets = google.sheets({
+const { API_KEY, SPREADSHEET_ID } = process.env;
+const getRoster = async () => {
+  const sheets = google.sheets({
     version: "v4",
     auth: API_KEY,
   });
 
-  var ranksSheet = await sheets.spreadsheets.values.get({
+  const ranksSheet = await sheets.spreadsheets.values.get({
     spreadsheetId: SPREADSHEET_ID,
     range: "Ranks!A2:C",
   });
 
-  var ranks = ranksSheet.data.values.reduce(
+  const ranks = ranksSheet.data.values.reduce(
     (acc, [rank, index, Description]) => ({
       ...acc,
       [rank]: {
@@ -24,12 +24,12 @@ var getRoster = async () => {
     {}
   );
 
-  var sheet = await sheets.spreadsheets.values.get({
+  const sheet = await sheets.spreadsheets.values.get({
     spreadsheetId: SPREADSHEET_ID,
     range: "Main Roster!B2:H",
   });
 
-  var allMembers = sheet.data.values
+  const allMembers = sheet.data.values
     .map(
       ([name, rank, enlistDate, dischargeDate, company, platoon, squad]) => ({
         name,
@@ -45,12 +45,12 @@ var getRoster = async () => {
     )
     .sort((a, b) => ranks[b.rank].index - ranks[a.rank].index);
 
-  var activeMembers = allMembers.filter((m) => !m.dischargeDate);
-  var foxPlatoons = ["First", "Second", "Third"];
-  var bravoPlatoons = ["First", "Second", "Third"];
-  var squads = ["First", "Second", "Third", "Fourth"];
+  const activeMembers = allMembers.filter((m) => !m.dischargeDate);
+  const foxPlatoons = ["First", "Second", "Third"];
+  const bravoPlatoons = ["First", "Second", "Third"];
+  const squads = ["First", "Second", "Third", "Fourth"];
   
-  var roster = 
+  const roster = 
   {
     name: "Division and Battalion Command",
     members: activeMembers.filter
@@ -67,11 +67,11 @@ var getRoster = async () => {
         ),
         children: foxPlatoons.map((platoonName) => 
 		{
-          var platoonMembers = activeMembers.filter
+          const platoonMembers = activeMembers.filter
 		  (
             (m) => m.company === "Fox" && m.platoon === platoonName
           );
-          var squadsNames = squads.filter
+          const squadsNames = squads.filter
 		  ((s) =>
             platoonMembers.some((m) => m.squad === s)
           );
@@ -99,10 +99,10 @@ var getRoster = async () => {
           (m) => m.company === "Bravo" && m.platoon === "Company"
         ),
         children: bravoPlatoons.map((platoonName) => {
-          var platoonMembers = activeMembers.filter(
+          const platoonMembers = activeMembers.filter(
             (m) => m.company === "Bravo" && m.platoon === platoonName
           );
-          var squadsNames = squads.filter((s) =>
+          const squadsNames = squads.filter((s) =>
             platoonMembers.some((m) => m.squad === s)
           );
           return {
