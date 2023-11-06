@@ -156,7 +156,70 @@ const getRoster = async () => {
 			}, 
 		],
       }, 	  
-	 
+	  {
+		// Bravo Company Command  
+        name: "Squad - Bravo Company",
+        members: activeMembers.filter((m) => m.company === "Bravo" && m.platoon === "Company"),
+		children:
+		[
+			{
+				// BP1 Command
+				name: "Squad - BP1",
+				members: activeMembers.filter((m) => m.company === "Bravo" && m.platoon === "First" && m.squad === "Company"),
+				children:
+				[
+					{
+						// BP1S1 Members
+						name: "Squad - BP1S1",
+						members: activeMembers.filter((m) => m.company === "Bravo" && m.platoon === "First" && m.squad === "First"),
+					},				
+					{
+						// BP1S2 Members
+						name: "Squad - BP1S2",
+						members: activeMembers.filter((m) => m.company === "Bravo" && m.platoon === "First" && m.squad === "Second"),
+					},				
+					{
+						// BP1S3 Members
+						name: "Squad - BP1S3",
+						members: activeMembers.filter((m) => m.company === "Bravo" && m.platoon === "First" && m.squad === "Third"),
+					},
+					{
+						// BP1S4 Members
+						name: "Squad - BP1S4",
+						members: activeMembers.filter((m) => m.company === "Bravo" && m.platoon === "First" && m.squad === "Fourth"),
+					},
+				],
+			}, 
+			{
+				// BP2 Command
+				name: "Squad - BP2",
+				members: activeMembers.filter((m) => m.company === "Bravo" && m.platoon === "Second" && m.squad === "Company"),
+				children:
+				[
+					{
+						// BB2S1 Members
+						name: "Squad - BP2S1",
+						members: activeMembers.filter((m) => m.company === "Bravo" && m.platoon === "Second" && m.squad === "First"),
+					},				
+					{
+						// BP2S2 Members
+						name: "Squad - BP2S2",
+						members: activeMembers.filter((m) => m.company === "Bravo" && m.platoon === "Second" && m.squad === "Second"),
+					},				
+					{
+						// BP2S3 Members
+						name: "Squad - BP2S3",
+						members: activeMembers.filter((m) => m.company === "Bravo" && m.platoon === "Second" && m.squad === "Third"),
+					},
+					{
+						// BP2S4 Members
+						name: "Squad - BP2S4",
+						members: activeMembers.filter((m) => m.company === "Bravo" && m.platoon === "Second" && m.squad === "Fourth"),
+					},
+				],
+			},  
+		],
+      }, 	 
       {
         name: "Reserves",
         members: activeMembers.filter((m) => m.platoon === "Reserves"),
