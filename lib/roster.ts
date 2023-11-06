@@ -50,33 +50,48 @@ var getRoster = async () => {
   var bravoPlatoons = ["First", "Second", "Third"];
   var squads = ["First", "Second", "Third", "Fourth"];
   
-  var roster = {
+  var roster = 
+  {
     name: "Division and Battalion Command",
-    members: activeMembers.filter(
+    members: activeMembers.filter
+	(
       (m) => m.company === "Division" || m.company === "Battalion"
     ),
-    children: [
+    children: 
+	[
       {
         name: "HLL - Fox Company",
-        members: activeMembers.filter(
+        members: activeMembers.filter
+		(
           (m) => m.company === "Fox" && m.platoon === "Company"
         ),
-        children: foxPlatoons.map((platoonName) => {
-          var platoonMembers = activeMembers.filter(
+        children: foxPlatoons.map((platoonName) => 
+		{
+          var platoonMembers = activeMembers.filter
+		  (
             (m) => m.company === "Fox" && m.platoon === platoonName
           );
-          var squadsNames = squads.filter((s) =>
+          var squadsNames = squads.filter
+		  ((s) =>
             platoonMembers.some((m) => m.squad === s)
           );
-          return {
+          return 
+		  {
             name: `${platoonName} Platoon`,
             members: platoonMembers.filter((m) => m.squad === "Company"),
-            children: squadsNames.map((squadName) => ({
-              name: `${squadName} Squad`,
-              members: platoonMembers.filter((m) => m.squad === squadName),
-            })),
+            children: squadsNames.map
+			(
+				(squadName) => 
+					(
+						{
+							name: `${squadName} Squad`,
+							members: platoonMembers.filter((m) => m.squad === squadName),
+						}
+					)
+			),
           };
-        }),
+        }
+		),
       },
       {
         name: "Squad - Bravo Company",
@@ -111,7 +126,7 @@ var getRoster = async () => {
           (m) => m.dischargeDate && m.platoon === "Retired"
         ),
       },
-    ],
+    ]
   };
 
   return roster;
