@@ -46,9 +46,9 @@ const getRoster = async () => {
     .sort((a, b) => ranks[b.rank].index - ranks[a.rank].index);
 
   const activeMembers = allMembers.filter((m) => !m.dischargeDate);
-  //const foxPlatoons = ["First", "Second", "Third"];
-  //const bravoPlatoons = ["First", "Second", "Third"];
-  //const squads = ["First", "Second", "Third", "Fourth"];
+  // const foxPlatoons = ["First", "Second", "Third"];
+  // const bravoPlatoons = ["First", "Second", "Third"];
+  // const squads = ["First", "Second", "Third", "Fourth"];
   
   const roster = 
   {
@@ -57,7 +57,7 @@ const getRoster = async () => {
 	(
       (m) => m.company === "Division" || m.company === "Battalion"
     ),
-    /*children: 
+    /* children: 
 	[
       {
         name: "HLL - Fox Company",
@@ -126,7 +126,7 @@ const getRoster = async () => {
           (m) => m.dischargeDate && m.platoon === "Retired"
         ),
       },
-    ],*/
+    ], */
   };
 
   return roster;
