@@ -61,7 +61,7 @@ const getRoster = async () => {
           (m) => m.company === "Fox" && m.platoon === "Company"
         ),
         children: foxPlatoons.map((platoonName) => {
-          const platoonMembers = activeMembers.filter(
+          var platoonMembers = activeMembers.filter(
             (m) => m.company === "Fox" && m.platoon === platoonName
           );
           const squadsNames = squads.filter((s) =>
@@ -83,7 +83,7 @@ const getRoster = async () => {
           (m) => m.company === "Bravo" && m.platoon === "Company"
         ),
         children: bravoPlatoons.map((platoonName) => {
-          const platoonMembers = activeMembers.filter(
+          var platoonMembers = activeMembers.filter(
             (m) => m.company === "Bravo" && m.platoon === platoonName
           );
           const squadsNames = squads.filter((s) =>
