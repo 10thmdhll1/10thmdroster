@@ -89,14 +89,41 @@ const getRoster = async () => {
 			{
 				name: "HLL - FP1",
 				members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "First" && m.squad === "Company"),
+				children:
+				[
+					name: "HLL - FP1S1",
+					members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "First" && m.squad === "First"),
+				];
+				[
+					name: "HLL - FP1S2",
+					members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "First" && m.squad === "Second"),
+				];
+				[
+					name: "HLL - FP1S3",
+					members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "First" && m.squad === "Third"),
+				];
+				[
+					name: "HLL - FP1S4",
+					members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "First" && m.squad === "Fourth"),
+				];
 			}, 
 			{
 				name: "HLL - FP2",
 				members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "Second" && m.squad === "Company"),
+				children:
+				[
+					name: "HLL - FP2S2",
+					members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "Second" && m.squad === "Second"),
+				];
 			}, 
 			{
 				name: "HLL - FP3",
 				members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "Third" && m.squad === "Company"),
+				children:
+				[
+					name: "HLL - FP3S1",
+					members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "Third" && m.squad === "Second"),
+				];
 			}, 
 		],
       }, 
