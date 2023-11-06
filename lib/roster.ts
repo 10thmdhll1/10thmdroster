@@ -84,21 +84,26 @@ const getRoster = async () => {
       {
         name: "HLL - Fox Company Leadership",
         members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "Company"),
+		children:
+		[
+			{
+				name: "HLL - Fox Company - First Platoon",
+				members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "First" && m.squad === "Company"),
+			}, 
+			{
+				name: "HLL - Fox Company - Second Platoon",
+				members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "Second" && m.squad === "Company"),
+			}, 
+			{
+				name: "HLL - Fox Company - Third Platoon",
+				members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "Third" && m.squad === "Company"),
+			}, 
+		],
       }, 
+	  
+	  
 	  {
-        name: "HLL - Fox Company - First Platoon",
-        members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "First" && m.squad === "Company"),
-      }, 
-	  {
-        name: "HLL - Fox Company - Second Platoon",
-        members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "Second" && m.squad === "Company"),
-      }, 
-	  {
-        name: "HLL - Fox Company - Third Platoon",
-        members: activeMembers.filter((m) => m.company === "Fox" && m.platoon === "Third" && m.squad === "Company"),
-      }, 
-	  {
-        name: "Squad - Bravo Company",
+        name: "Squad - Bravo Company Leadership",
         members: activeMembers.filter((m) => m.company === "Bravo" && m.platoon === "Company"),
       }, 
       {
