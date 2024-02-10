@@ -45,23 +45,27 @@ const getRoster = async () => {
     )
     .sort((a, b) => ranks[b.rank].index - ranks[a.rank].index);
 
-  const activeMembersRoster = allMembers.filter((m) => !m.dischargeDate);
+  const activeMembersDiv = allMembers.filter((m) => !m.dischargeDate);
+  const activeMembersFox = allMembers.filter((m) => !m.dischargeDate);
+  const activeMembersKing = allMembers.filter((m) => !m.dischargeDate);
+  const activeMembersReserves = allMembers.filter((m) => !m.dischargeDate);
+  
   const foxPlatoons = ["First", "Second", "Third"];
   const KingPlatoons = ["First", "Second", "Third"];
   const squads = ["First", "Second", "Third", "Fourth"];
   const roster = {
     name: "Division and Battalion Command",
-    members: activeMembersRoster.filter(
+    members: activeMembersDiv.filter(
       (m) => m.company === "Division" || m.company === "Battalion"
     ),
     children: [
       {
         name: "HLL - Fox Company",
-        members: activeMembersRoster.filter(
+        members: activeMembersFox.filter(
           (m) => m.company === "Fox" && m.platoon === "Company"
         ),
         children: foxPlatoons.map((platoonName) => {
-          const platoonMembers = activeMembersRoster.filter(
+          const platoonMembers = activeMembersFox.filter(
             (m) => m.company === "Fox" && m.platoon === platoonName
           );
           const squadsNames = squads.filter((s) =>
@@ -79,11 +83,11 @@ const getRoster = async () => {
       },
       {
         name: "HLL - King Company",
-        members: activeMembersRoster.filter(
+        members: activeMembersKing.filter(
           (m) => m.company === "King" && m.platoon === "Company"
         ),
         children: KingPlatoons.map((platoonName) => {
-          const platoonMembers = activeMembersRoster.filter(
+          const platoonMembers = activeMembersKing.filter(
             (m) => m.company === "King" && m.platoon === platoonName
           );
           const squadsNames = squads.filter((s) =>
@@ -102,7 +106,7 @@ const getRoster = async () => {
       },
       {
         name: "Reserves",
-        members: activeMembersRoster.filter((m) => m.platoon === "Reserves"),
+        members: activeMembersReserves.filter((m) => m.platoon === "Reserves"),
       },
       {
         name: "Retired Members",
