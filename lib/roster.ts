@@ -45,23 +45,23 @@ const getRoster = async () => {
     )
     .sort((a, b) => ranks[b.rank].index - ranks[a.rank].index);
 
-  const activeMembers = allMembers.filter((m) => !m.dischargeDate);
+  const activeMembersRoster = allMembers.filter((m) => !m.dischargeDate);
   const foxPlatoons = ["First", "Second", "Third"];
   const KingPlatoons = ["First", "Second", "Third"];
   const squads = ["First", "Second", "Third", "Fourth"];
   const roster = {
     name: "Division and Battalion Command",
-    members: activeMembers.filter(
+    members: activeMembersRoster.filter(
       (m) => m.company === "Division" || m.company === "Battalion"
     ),
     children: [
       {
         name: "HLL - Fox Company",
-        members: activeMembers.filter(
+        members: activeMembersRoster.filter(
           (m) => m.company === "Fox" && m.platoon === "Company"
         ),
         children: foxPlatoons.map((platoonName) => {
-          const platoonMembers = activeMembers.filter(
+          const platoonMembers = activeMembersRoster.filter(
             (m) => m.company === "Fox" && m.platoon === platoonName
           );
           const squadsNames = squads.filter((s) =>
@@ -79,11 +79,11 @@ const getRoster = async () => {
       },
       {
         name: "HLL - King Company",
-        members: activeMembers.filter(
+        members: activeMembersRoster.filter(
           (m) => m.company === "King" && m.platoon === "Company"
         ),
         children: KingPlatoons.map((platoonName) => {
-          const platoonMembers = activeMembers.filter(
+          const platoonMembers = activeMembersRoster.filter(
             (m) => m.company === "King" && m.platoon === platoonName
           );
           const squadsNames = squads.filter((s) =>
@@ -102,7 +102,7 @@ const getRoster = async () => {
       },
       {
         name: "Reserves",
-        members: activeMembers.filter((m) => m.platoon === "Reserves"),
+        members: activeMembersRoster.filter((m) => m.platoon === "Reserves"),
       },
       {
         name: "Retired Members",
