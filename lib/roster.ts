@@ -45,7 +45,7 @@ const getRoster = async () => {
     )
     .sort((a, b) => ranks[b.rank].index - ranks[a.rank].index);
 
-  var activeMembers = allMembers.filter((m) => !m.dischargeDate);
+  const activeMembers = allMembers.filter((m) => !m.dischargeDate);
   const foxPlatoons = ["First", "Second", "Third"];
   const KingPlatoons = ["First", "Second", "Third"];
   const squads = ["First", "Second", "Third", "Fourth"];
