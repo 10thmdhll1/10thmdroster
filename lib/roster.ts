@@ -87,14 +87,6 @@ const getRoster = async () => {
       {
         name: "Retired",
         members: ActiveMembers.filter((m) => m.platoon === "Retired"),
-        children: Platoons.map((platoonName) => {
-          const platoonMembers = ActiveMembers.filter((m) => m.platoon === "Retired");
-          const squadsNames = Squads.filter((s) => platoonMembers.some((m) => m.squad === s));
-          return {
-            name: `${platoonName} Platoon`,
-            members: platoonMembers.filter((m) => m.squad === "Company"),
-                 };
-        }),
       },
     ],
   };
