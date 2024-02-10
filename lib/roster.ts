@@ -46,8 +46,8 @@ const getRoster = async () => {
     .sort((a, b) => ranks[b.rank].index - ranks[a.rank].index);
 
   const ActiveMembers = allMembers.filter((m) => !m.dischargeDate);
-  const Platoons = ["First", "Second", "Third", "Fourth"];
-  const Squads = ["First", "Second", "Third", "Fourth","Reserves"];
+  const Platoons = ["First", "Second", "Third", "Fourth", "Reserves"];
+  const Squads = ["First", "Second", "Third", "Fourth", "Reserves"];
   const roster = {
     name: "Division and Battalion Command",
     members: ActiveMembers.filter((m) => m.company === "Division" || m.company === "Battalion"),
@@ -55,6 +55,22 @@ const getRoster = async () => {
       {
         name: "HLL - Fox Company",
         members: ActiveMembers.filter((m) => m.company === "Fox" && m.platoon === "Company"),
+        children: Platoons.map((platoonName) => {
+          const platoonMembers = ActiveMembers.filter((m) => m.company === "Fox" && m.platoon === platoonName);
+          const squadsNames = Squads.filter((s) => platoonMembers.some((m) => m.squad === s));
+          return {
+            name: `${platoonName} Platoon`,
+            members: platoonMembers.filter((m) => m.squad === "Company"),
+            children: squadsNames.map((squadName) => ({
+              name: `${squadName} Squad`,
+              members: platoonMembers.filter((m) => m.squad === squadName),
+            })),
+          };
+        }),
+      },
+      {
+        name: "HLL - King Company",
+        members: ActiveMembers.filter((m) => m.company === "King" && m.platoon === "Company"),
         children: Platoons.map((platoonName) => {
           const platoonMembers = ActiveMembers.filter((m) => m.company === "Fox" && m.platoon === platoonName);
           const squadsNames = Squads.filter((s) => platoonMembers.some((m) => m.squad === s));
