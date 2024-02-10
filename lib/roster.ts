@@ -50,7 +50,7 @@ const getRoster = async () => {
   const Squads = ["First", "Second", "Third", "Fourth","Reserves"];
   const roster = {
     name: "Division and Battalion Command",
-    members: activeMembers.filter((m) => m.company === "Division" || m.company === "Battalion"),
+    members: ActiveMembers.filter((m) => m.company === "Division" || m.company === "Battalion"),
     children: [
       {
         name: "HLL - Fox Company",
