@@ -78,7 +78,7 @@ const getRoster = async () => {
         }),
       },
       {
-        name: "Squad - King Company",
+        name: "HLL - King Company",
         members: activeMembers.filter(
           (m) => m.company === "King" && m.platoon === "Company"
         ),
