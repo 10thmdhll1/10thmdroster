@@ -47,7 +47,7 @@ const getRoster = async () => {
 
   var activeMembers = allMembers.filter((m) => !m.dischargeDate);
   const foxPlatoons = ["First", "Second", "Third"];
-  const bravoPlatoons = ["First", "Second", "Third"];
+  const KingPlatoons = ["First", "Second", "Third"];
   const squads = ["First", "Second", "Third", "Fourth"];
   const roster = {
     name: "Division and Battalion Command",
@@ -78,13 +78,13 @@ const getRoster = async () => {
         }),
       },
       {
-        name: "Squad - Bravo Company",
+        name: "Squad - King Company",
         members: activeMembers.filter(
-          (m) => m.company === "Bravo" && m.platoon === "Company"
+          (m) => m.company === "King" && m.platoon === "Company"
         ),
-        children: bravoPlatoons.map((platoonName) => {
+        children: KingPlatoons.map((platoonName) => {
           const platoonMembers = activeMembers.filter(
-            (m) => m.company === "Bravo" && m.platoon === platoonName
+            (m) => m.company === "King" && m.platoon === platoonName
           );
           const squadsNames = squads.filter((s) =>
             platoonMembers.some((m) => m.squad === s)
