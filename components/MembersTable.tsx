@@ -15,7 +15,8 @@ export default function MembersTable({ members }) {
           <TableRow>
             <TableCell>Rank</TableCell>
             <TableCell>Display Name</TableCell>
-            <TableCell>Member Since</TableCell>
+            <TableCell>Enliist Date</TableCell>
+            <TableCell>Discharge Date</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -43,6 +44,7 @@ export default function MembersTable({ members }) {
                 {row.name}
               </TableCell>
               <TableCell>{row.enlistDate}</TableCell>
+              <TableCell>{row.dischargeDate}</TableCell>
             </TableRow>
           ))}
         </TableBody>
