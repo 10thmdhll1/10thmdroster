@@ -86,7 +86,7 @@ const getRoster = async () => {
       },
       {
         name: "Retired",
-        members: ActiveMembers.filter((m) => m.platoon === "Retired"),
+        members: allMembers.filter((m) => m.dischargeDate && m.platoon === "Retired"),
       },
     ],
   };
