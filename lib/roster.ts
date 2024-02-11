@@ -47,7 +47,7 @@ const getRoster = async () => {
 
   const ActiveMembers = allMembers.filter((m) => !m.dischargeDate);
   const Platoons = ["First", "Second", "Third", "Fourth", "Reserves"];
-  const Squads = ["First", "Second", "Third", "Fourth", "Reserves"];
+  const Squads = ["First", "Second", "Third", "Fourth"];
   const roster = {
     name: "Division and Battalion Command",
     members: ActiveMembers.filter((m) => m.company === "Division" || m.company === "Battalion"),
@@ -83,6 +83,10 @@ const getRoster = async () => {
             })),
           };
         }),
+      },
+      {
+        name: "Reserves",
+        members: allMembers.filter((m) => !m.dischargeDate && m.platoon === "Reserves"),
       },
       {
         name: "Retired",
